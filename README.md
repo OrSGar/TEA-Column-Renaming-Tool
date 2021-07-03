@@ -15,13 +15,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
 
 
 <!-- PROJECT LOGO -->
@@ -47,16 +40,12 @@
       </ul>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#using-the-tool">Using the Tool</a>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
@@ -115,7 +104,7 @@ The source code for the project can be found in the [`KeyProcessor.py`](https://
 <!-- GETTING STARTED -->
 ## Using the Tool
 
-To use the tool, clone this repo to your local computer or download KeyProcessor.py and KeyConverterTool.pynb.
+To use the tool, I suggest downloading the `KeyProcessor.py` and `KeyConverterTool.pynb` files. 
 
 ### Prerequisites
 
@@ -137,6 +126,10 @@ Orlando Garcia - orlando.s.gar@gmail.com
 
 Project Link: [https://github.com/OrSGar/TEA-Column-Key-Converter](https://github.com/OrSGar/TEA-Column-Key-Converter)
 
+<!-- ACKNOWLEDGEMENTS -->
+## Acknowledgements 
+
+Special thanks to [othneildrew](https://github.com/othneildrew) and his README [template](https://github.com/othneildrew/Best-README-Template). 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
