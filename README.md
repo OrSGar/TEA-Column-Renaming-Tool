@@ -40,8 +40,9 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#project-background">Project Background</a>
       <ul>
+        <li><a href="#about-the-project">About the Project</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -77,140 +78,71 @@ A common issue we found when collecting data from TEA were the names of the data
 
 ![columns-screenshot]
 
-Before proceeding with analysis, we needed to convert these columns to their respective key:value mappings across a variety of datasets. For one file alone this 
+Before proceeding with analysis, we needed to convert these columns to their respective `key:value` mappings across a variety of datasets. For one file alone this 
 could possibly be feasible simply by referencing the descriptions provided by TEA after each download (shown below).
 
 ![reference-screenshot]
 
+![reference-website]
 
-Since the team planned to use several datasets with different attributes across different school years, doing this by hand for each dataset would prove to be tedious. To speed up the the data gathering phase, I decided to build this tool that could be used by each team member for any dataset they downloaded. 
+Since the team planned to use several datasets with different attributes across different school years, doing this by hand for each dataset would prove to be tedious. To speed up the data gathering phase, I decided to build this tool that could be used by each team member for any dataset they downloaded. 
 
+Some requirements going into the project were as follows:
 
+* In a format everyone was familiar with for usability
+* Powerful enough to be used in several situations 
+* Can be incorporated into a data analysis notebook
 
-### About The Project 
+### About the Project
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating a README from scratch
-* You should element DRY principles to the rest of your life :smile:
+For the implementation, I decided a web scraper would be the best in this situation. Since every variable description website is in the same format, it only made sense
+to scrape the mappings and convert them to JSOM. 
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have have contributed to expanding this template!
+Correlation One's DS4A program provides data analysis training for people come a variety of backgrounds, including non-technical ones. With this in mind, I decided to take an 
+object-oriented approach to the tools source code. This helps with abstraction and decomposition of the tool to help me during development and help the user not have to worry too much about
+how it works. 
 
-A list of commonly used resources that I find helpful are listed in the acknowledgements.
+The tool works in 3 major steps:
+1. The user defines the variables they want to use (dataset reference link, and replacement words)
+2. Scrapes the website to get the descriptions and saves the results to json and local storage
+3. Users are able to replace words in the descriptions to shorten the length of the column name (removing redundant words, changing genders to their short versions)
+
+The source code for the project can be found in the [`KeyProcessor.py`](https://github.com/OrSGar/TEA-Column-Key-Converter-/blob/main/KeyProcessor.py) file. 
 
 ### Built With
 * [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/)
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Using the Tool
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To use the tool, clone this repo to your local computer or download KeyProcessor.py and KeyConverterTool.pynb.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```JS
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
-
+* Python 3.9 (version I used, not sure if it works with other versions)
+* Jupyter Notebook
+* BeautifulSoup4 package
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a list of proposed features (and known issues).
-
-
-
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-
-
-<!-- LICENSE -->
-## License
-
-Distributed under the MIT License. See `LICENSE` for more information.
-
-
+A usage example can be found within the Converter Tool Example.pynb
 
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+For any questions, suggestions, or issues regarding this tool, please feel free to reach out to me directly;
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Orlando Garcia - orlando.s.gar@gmail.com
 
-
-
-<!-- ACKNOWLEDGEMENTS -->
-## Acknowledgements
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Img Shields](https://shields.io)
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Pages](https://pages.github.com)
-* [Animate.css](https://daneden.github.io/animate.css)
-* [Loaders.css](https://connoratherton.com/loaders)
-* [Slick Carousel](https://kenwheeler.github.io/slick)
-* [Smooth Scroll](https://github.com/cferdinandi/smooth-scroll)
-* [Sticky Kit](http://leafo.net/sticky-kit)
-* [JVectorMap](http://jvectormap.com)
-* [Font Awesome](https://fontawesome.com)
-
-
-
+Project Link: [https://github.com/OrSGar/TEA-Column-Key-Converter](https://github.com/OrSGar/TEA-Column-Key-Converter)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
 [columns-screenshot]: README_Resources/columns_original.JPG
 [reference-screenshot]: README_Resources/reference_screenshot.JPG
+[reference-website]: README_Resources/reference_website.JPG
 [ds4a]: https://www.correlation-one.com/data-science-for-all-empowerment
 [tea-data-statement]: https://tea.texas.gov/reports-and-data
+[key-processor]: https://github.com/OrSGar/TEA-Column-Key-Converter-/blob/main/KeyProcessor.py
