@@ -1,0 +1,6 @@
+Requirements: 
+
+1. Readlines from key mapping txt file
+2. Shorten column names via user defined json file (json file idetifiying the column and what to change it to)
+3. Convert txt file to json file with user defined column names 
+4. Save as json file 
