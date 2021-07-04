@@ -61,7 +61,7 @@ For my groups capstone project with [Correlation One's](https://www.correlation-
 to analyze the effect of COVID-19 on Round Rock ISD students. Through our data analysis of student performance metrics in a variety of teaching formats (in person, hybrid, etc) we would have provided suggestions
 to the school district on what they can do to help improve student academic performances.
 
-Since the Texas Education Agency create their information management system in 1980, the data they have gathered across 1,200 districts and charters in Texas have been 
+Since the Texas Education Agency created their information management system in 1980, the data they have gathered across 1,200 districts and charters in Texas have been 
 available to the public. To learn more about TEA and their datasets, visit their reports and data homepage: [TEA Reports](https://tea.texas.gov/reports-and-data)
 
 A common issue we found when collecting data from TEA were the names of the dataset columns. An example of a column from a dataset is shown below:
@@ -75,27 +75,29 @@ could possibly be feasible simply by referencing the descriptions provided by TE
 
 ![reference-website]
 
-Since the team planned to use several datasets with different attributes across different school years, doing this by hand for each dataset would prove to be tedious. To speed up the data gathering phase, I decided to build this tool that could be used by each team member for any dataset they downloaded. 
+Since the team planned to use several datasets with different attributes across different school years, doing this by hand for each dataset would prove to be tedious. 
+To speed up the data gathering phase, I decided to build this tool that could be used by each team member for datasets they downloaded from TEA. 
 
 Some requirements going into the project were as follows:
 
 * In a format everyone was familiar with for usability
-* Powerful enough to be used in several situations 
-* Can be incorporated into a data analysis notebook
+* Powerful enough to be used in a variety of use cases 
+* Can be incorporated into any data analysis notebook
 
 ### About the Project
 
 For the implementation, I decided a web scraper would be the best in this situation. Since every variable description website is in the same format, it only made sense
-to scrape the mappings and convert them to JSOM. 
+to scrape the mappings and convert them to JSON. 
 
 Correlation One's DS4A program provides data analysis training for people come a variety of backgrounds, including non-technical ones. With this in mind, I decided to take an 
-object-oriented approach to the tools source code. This helps with abstraction and decomposition of the tool to help me during development and help the user not have to worry too much about
+object-oriented approach to the tools source code. This helped with abstraction and decomposition of the tool to help me during development and help the user not have to worry too much about
 how it works. 
 
 The tool works in 3 major steps:
 1. The user defines the variables they want to use (dataset reference link, and replacement words)
-2. Scrapes the website to get the descriptions and saves the results to json and local storage
+2. User define website is scraped to get the descriptions and saves the results to JSON format in the local directory `Generated Keys`.
 3. Users are able to replace words in the descriptions to shorten the length of the column name (removing redundant words, changing genders to their short versions)
+4. The new processed JSON keys are stored in local directory `Processed Keys`.
 
 The source code for the project can be found in the [`KeyProcessor.py`](https://github.com/OrSGar/TEA-Column-Key-Converter-/blob/main/KeyProcessor.py) file. 
 
@@ -135,7 +137,7 @@ Special thanks to [othneildrew](https://github.com/othneildrew) and his README [
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [columns-screenshot]: README_Resources/columns_original.JPG
-[reference-screenshot]: README_Resources/reference_screenshot.JPG
+[reference-screenshot]: README_Resources/reference_screenshot.png
 [reference-website]: README_Resources/reference_website.JPG
 [ds4a]: https://www.correlation-one.com/data-science-for-all-empowerment
 [tea-data-statement]: https://tea.texas.gov/reports-and-data
