@@ -20,14 +20,16 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-    <img src="README_Resources/TEA_Logo.png" alt="Logo" width="180" height="90">
-    
-  <h3 align="center">TEA Column Renaming Tool</h3>
+    <a href="https://tea.texas.gov/">
+        <img src="README_Resources/TEA_Logo.png" alt="Logo" width="180" height="90">
+    </a>
 
-  <p align="center">
-    Renaming tool for Texas Education Agency Public Datasets 
-    <br />
-  </p>
+<h3 align="center">TEA Column Renaming Tool</h3>
+
+<p align="center">
+        Renaming tool for Texas Education Agency Public Datasets
+</p>
+
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
