@@ -39,7 +39,10 @@ class KeyWebsite:
         clean(replacement_dict=None, override_default=False)
             Cleans the key_dict dictionary using the defaults in the class
         clean(replacement_dict=dict, override_default=True)
-            Cleans the key_dict dictionary using replacement_dict paramter, will not use defaults
+            Cleans the key_dict dictionary using replacement_dict parameter, will not use defaults
+        create_required_dirs()
+            Checks for required directories present, creates them otherwise
+
 
     """
 
@@ -112,7 +115,7 @@ class KeyWebsite:
     def save_json(self, file='scraped'):
         """
         Saves a a key_dict to the Generated Keys directory or cleaned_dict to the Processed Keys directory
-        For cleaned_dict, set mode='cleaned'
+        For cleaned_dict, set file='cleaned'
         :param file: 'scraped' or 'cleaned', default 'scraped'
         :type file: str
         """
@@ -123,14 +126,14 @@ class KeyWebsite:
                     raise FileNotFoundError
 
                 with open(self._file_save_path, 'w') as destination:
-                    json.dump(self._key_dict, destination)
+                    json.dump(self._key_dict, destination, indent=2)
             # Save cleaned_dict as json in ./Processed_Keys
             elif file == 'cleaned':
                 if not self._cleaned_filename:
                     raise FileNotFoundError
 
                 with open(self._cleaned_file_save_path, 'w') as destination:
-                    json.dump(self._cleaned_dict, destination)
+                    json.dump(self._cleaned_dict, destination, indent=2)
 
         except FileNotFoundError:
             print(f"No files saved, please make sure you have run the scrape() or clean() functions.")
@@ -183,4 +186,17 @@ class KeyWebsite:
         else:
             print('Required directories present')
 
+    @classmethod
+    def check_url(cls, url):
+        """ Checks url to for correct typing """
+        try:
+            if not url:
+                raise ValueError
 
+            if not isinstance(url, str):
+                raise TypeError
+
+        except (ValueError, TypeError):
+            return "Please make sure you have defined the required variables"
+        else:
+            return 'Variable checks passed'
