@@ -58,7 +58,7 @@
 <!-- ABOUT THE PROJECT -->
 ## Project Background
 
-## Project Inception 
+### Project Inception 
 For my groups capstone project with [Correlation One's](https://www.correlation-one.com/) [DS4A](https://www.correlation-one.com/data-science-for-all-empowerment) training program, we decided
 to analyze the effect of COVID-19 on Round Rock ISD students. Through our data analysis of student performance metrics in a variety of teaching formats (in person, hybrid, etc) we would have provided suggestions
 to the school district on what they can do to help improve student academic performances.
