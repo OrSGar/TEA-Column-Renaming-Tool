@@ -131,7 +131,7 @@ For any questions, suggestions, or issues regarding this tool please feel free t
 
 Orlando Garcia - orlando.s.gar@gmail.com
 
-Project Link: [https://github.com/OrSGar/TEA-Column-Key-Converter](https://github.com/OrSGar/TEA-Column-Renaming-Tool)
+Project Link: [https://github.com/OrSGar/TEA-Column-Renaming-Tool](https://github.com/OrSGar/TEA-Column-Renaming-Tool)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements 
