@@ -104,7 +104,7 @@ The source code for the project can be found in the [`KeyProcessor.py`](https://
 <!-- GETTING STARTED -->
 ## Using the Tool
 
-To use the tool, I suggest downloading the `KeyProcessor.py` and `KeyConverterTool.pynb` files. 
+To use the tool, I suggest downloading the [`KeyProcessor.py`](https://github.com/OrSGar/TEA-Column-Key-Converter-/blob/main/KeyProcessor.py) and [`KeyConverterTool.pynb`](https://github.com/OrSGar/TEA-Column-Key-Converter/blob/main/Key%20Converter%20Tool.ipynb) files. 
 
 ### Prerequisites
 
