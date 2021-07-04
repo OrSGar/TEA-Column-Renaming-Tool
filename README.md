@@ -25,7 +25,7 @@
   <h3 align="center">TEA Column Renaming Tool</h3>
 
   <p align="center">
-    Column Renaming tool for Texas Education Agency Public Datasets 
+    Renaming tool for Texas Education Agency Public Datasets 
     <br />
   </p>
 
