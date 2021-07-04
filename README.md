@@ -73,7 +73,7 @@ A common issue we found when collecting data from TEA were the names of the data
 ![columns-screenshot]
 
 Before proceeding with analysis, we needed to convert these columns to their respective `key:value` mappings across a variety of datasets. For one file alone this 
-could possibly be feasible simply by referencing the descriptions provided by TEA after each download (shown below).
+could be feasible simply by referencing the descriptions provided by TEA after each download (shown below).
 
 ![reference-screenshot]
 
@@ -93,8 +93,8 @@ Some requirements going into the project were as follows:
 For the implementation, I decided a web scraper would be the best in this situation. Since every variable description website is in the same format, it only made sense
 to scrape the mappings and convert them to JSON. 
 
-Correlation One's DS4A program provides data analysis training for people come a variety of backgrounds, including non-technical ones. With this in mind, I decided to take an 
-object-oriented approach to the tools source code. This helped with abstraction and decomposition of the tool to help me during development and help the user not have to worry too much about
+Correlation One's DS4A program provides data analysis training for people that come from a variety of backgrounds, including non-technical ones. With this in mind, I decided to take an 
+object-oriented approach to the tools source code. This helped with abstraction and decomposition of the tool to help me during development and to help the user not worry about
 how it works. 
 
 The tool works in 3 major steps:
@@ -127,11 +127,11 @@ A usage example can be found within the Converter Tool Example.pynb
 <!-- CONTACT -->
 ## Contact
 
-For any questions, suggestions, or issues regarding this tool, please feel free to reach out to me directly;
+For any questions, suggestions, or issues regarding this tool please feel free to reach out to me directly;
 
 Orlando Garcia - orlando.s.gar@gmail.com
 
-Project Link: [https://github.com/OrSGar/TEA-Column-Key-Converter](https://github.com/OrSGar/TEA-Column-Key-Converter)
+Project Link: [https://github.com/OrSGar/TEA-Column-Key-Converter](https://github.com/OrSGar/TEA-Column-Renaming-Tool)
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements 
