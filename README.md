@@ -20,7 +20,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-    <img src="README_Resources/TEA_Logo.png" alt="Logo" width="90" height="90">
+    <img src="README_Resources/TEA_Logo.png" alt="Logo" width="180" height="90">
     
   <h3 align="center">TEA Column Renaming Tool</h3>
 
