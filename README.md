@@ -20,7 +20,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
- 
+    <img src="README_Resources/TEA_Logo.png" alt="Logo" width="90" height="90">
+    
   <h3 align="center">TEA Column Renaming Tool</h3>
 
   <p align="center">
@@ -63,7 +64,7 @@ to the school district on what they can do to help improve student academic perf
 Since the Texas Education Agency create their information management system in 1980, the data they have gathered across 1,200 districts and charters in Texas have been 
 available to the public. To learn more about TEA and their datasets, visit their reports and data homepage: [TEA Reports](https://tea.texas.gov/reports-and-data)
 
-A common issue we found when collecting data from TEA were the names of the dataset columns. An example of a dataset CSV from TEA shown below:
+A common issue we found when collecting data from TEA were the names of the dataset columns. An example of a column from a dataset is shown below:
 
 ![columns-screenshot]
 
