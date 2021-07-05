@@ -127,6 +127,7 @@ class KeyWebsite:
 
                 with open(self._file_save_path, 'w') as destination:
                     json.dump(self._key_dict, destination, indent=2)
+                    print(f'JSON file stored at: ./{self._file_save_path}')
             # Save cleaned_dict as json in ./Processed_Keys
             elif file == 'cleaned':
                 if not self._cleaned_filename:
@@ -134,6 +135,7 @@ class KeyWebsite:
 
                 with open(self._cleaned_file_save_path, 'w') as destination:
                     json.dump(self._cleaned_dict, destination, indent=2)
+                    print(f'JSON file stored at: ./{self._cleaned_file_save_path}')
 
         except FileNotFoundError:
             print(f"No files saved, please make sure you have run the scrape() or clean() functions.")
