@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import json
 from pathlib import Path
+from pandas import DataFrame, read_csv
 
 
 class KeyWebsite:
@@ -57,6 +58,8 @@ class KeyWebsite:
     def __init__(self, url):
         self._url = url
         self._filename = ''
+        self._dataset_path = ''
+        self._dataset_name = ''
         self._file_save_path = ''
         self._cleaned_filename = ''
         self._cleaned_file_save_path = ''
@@ -87,6 +90,16 @@ class KeyWebsite:
     def cleaned_dict(self):
         """Get cleaned_dict"""
         return self._cleaned_dict
+
+    @property
+    def dataset_path(self):
+        return self._dataset_path
+
+    @dataset_path.setter
+    def dataset_path(self, path):
+        if isinstance(path, str):
+            self._dataset_path = path
+            self._dataset_name = Path(path).stem
 
     def scrape(self):
         """
@@ -178,12 +191,28 @@ class KeyWebsite:
 
         return self._cleaned_dict.copy()
 
+    def remap(self, mapping='cleaned'):
+        try:
+            if not self.dataset_path:
+                raise ValueError
+
+            if mapping == 'cleaned':
+                new_file_name = f'{self._dataset_name}_cleaned_mappings.csv'
+                read_csv(self._dataset_path).rename(columns=self._cleaned_dict, inplace=True).to_csv(f'{new_file_name}')
+
+            if mapping == 'scraped':
+                new_file_name = f'{self._dataset_name}_scraped_mappings.csv'
+                read_csv(self._dataset_path).rename(columns=self._cleaned_dict, inplace=True).to_csv(new_file_name)
+
+        except ValueError:
+            print('Please define a dataset path before remapping')
     @staticmethod
     def create_required_dirs():
         """ Check for and create required directories"""
-        if not Path('./Generated_Keys/').is_dir():
+        if not Path('./Generated_Keys/').is_dir() or not Path('./Generated_Keys/').is_dir() or not Path('./Processed_Datasets/'):
             Path('./Generated_Keys/').mkdir(parents=True, exist_ok=True)
             Path('./Processed_Keys/').mkdir(parents=True, exist_ok=True)
+            Path('./Processed_Datasets/').mkdir(parents=True, exist_ok=True)
             print('Required directories created')
         else:
             print('Required directories present')
