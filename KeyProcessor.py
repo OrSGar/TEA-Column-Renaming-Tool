@@ -11,7 +11,7 @@ class KeyWebsite:
 
         Attributes
         ----------
-        DEFAULTS : dict
+        KeyWebsite.DEFAULTS : dict
             Default word replacements for a generated dict
         url : str
             URL of the target website
@@ -36,7 +36,7 @@ class KeyWebsite:
         Methods
         -------
         scrape()
-            Scrapes the URL of the website and generates a dictionary, sets the filename, returns a copy of the dictionary
+            Scrapes the URL of the website and generates a dictionary, sets the filename, returns a copy of the dict
         save_json(mode='scraped')
             Saves the original dictionary to the Generated Keys directory
         save_json(mode='cleaned')
@@ -47,7 +47,7 @@ class KeyWebsite:
             Cleans the key_dict dictionary using replacement_dict parameter, will not use defaults
         create_required_dirs()
             Checks for required directories present, creates them otherwise
-        remap()
+        remap(mapping='cleaned')
             Remaps columns in original dataset to the dict generated from the original website dict or the cleaned dict
 
 
@@ -204,7 +204,7 @@ class KeyWebsite:
 
     def remap(self, mapping='cleaned'):
         """
-        Remaps the columns of the original dataset found at location self._dataset_path and store in ./Processed_Datasets
+        Remaps the columns of original dataset found at location self._dataset_path and store in ./Processed_Datasets
         Can use cleaned dict or original to be used to remap the columns
         :param mapping: 'cleaned' for cleaned dictionary; 'scraped' for the original, default 'cleaned'
         :type mapping: str
