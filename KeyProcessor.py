@@ -1,8 +1,8 @@
-from bs4 import BeautifulSoup
-import requests
-import json
 from pathlib import Path
-from pandas import DataFrame, read_csv
+import json
+import requests
+from bs4 import BeautifulSoup
+from pandas import read_csv
 
 
 class KeyWebsite:
@@ -11,12 +11,16 @@ class KeyWebsite:
 
         Attributes
         ----------
-        default_replacements : dict
+        DEFAULTS : dict
             Default word replacements for a generated dict
         url : str
             URL of the target website
         _filename : str
             Filename of the saved JSON file (pre-processing)
+        _dataset_path : str
+            Absolute path of the location of the dataset corresponding to the TEA reference website
+        _dataset_name : str
+            Name of the dataset file
         _file_save_path : str
             Save path of file
         _cleaned_filename : str
@@ -43,11 +47,13 @@ class KeyWebsite:
             Cleans the key_dict dictionary using replacement_dict parameter, will not use defaults
         create_required_dirs()
             Checks for required directories present, creates them otherwise
+        remap()
+            Remaps columns in original dataset to the dict generated from the original website dict or the cleaned dict
 
 
     """
 
-    default_replacements = {
+    DEFAULTS = {
         'Average': 'Avg',
         ' Students': '',
         'Male': 'M',
@@ -55,7 +61,7 @@ class KeyWebsite:
         '  ': ' ',
     }
 
-    def __init__(self, url):
+    def __init__(self, url: str):
         self._url = url
         self._filename = ''
         self._dataset_path = ''
@@ -156,10 +162,9 @@ class KeyWebsite:
     def clean(self, replacement_dict=None, override_default=False):
         """
         Saves a a key_dict to the Generated Keys directory or cleaned_dict to the Processed Keys directory
-        For cleaned_dict, set mode='cleaned'
         :param replacement_dict: A user defined dict with words to be replaced in key_dict, default None
         :type replacement_dict: dict
-        :param override_default:
+        :param override_default: Override using the default replacement dictionary to replace words, default False
         :type override_default: bool
         :return: Copy of the cleaned dict
         """
@@ -169,21 +174,27 @@ class KeyWebsite:
             if not self._filename:
                 raise FileNotFoundError
 
+            # Iterate through keys
             for column_key, value in self._key_dict.items():
+                # Replace using defaults if override_defaults False
                 if not override_default:
-                    for target_word in KeyWebsite.default_replacements.keys():
-                        value = value.replace(target_word, KeyWebsite.default_replacements[target_word]).strip()
+                    for target_word in KeyWebsite.DEFAULTS.keys():
+                        value = value.replace(target_word, KeyWebsite.DEFAULTS[target_word]).strip()
 
+                # Replace words using user defined dict param
                 if replacement_dict:
                     for target_word in replacement_dict.keys():
                         value = value.replace(target_word, replacement_dict[target_word]).strip()
 
+                # Add results to new dict
                 self._cleaned_dict[column_key] = value
 
+            # Create save path
             self._cleaned_file_save_path = 'Processed_Keys/' + \
                                            Path(self._filename).name.replace('.json', '').strip() + \
                                            ' Processed Keys' + '.json '
 
+            # Create file name
             self._cleaned_filename = self._cleaned_file_save_path.split("/")[1]
 
         except FileNotFoundError:
@@ -192,24 +203,44 @@ class KeyWebsite:
         return self._cleaned_dict.copy()
 
     def remap(self, mapping='cleaned'):
+        """
+        Remaps the columns of the original dataset found at location self._dataset_path and store in ./Processed_Datasets
+        Can use cleaned dict or original to be used to remap the columns
+        :param mapping: 'cleaned' for cleaned dictionary; 'scraped' for the original, default 'cleaned'
+        :type mapping: str
+        """
         try:
             if not self.dataset_path:
-                raise ValueError
+                raise AttributeError
 
             if mapping == 'cleaned':
-                new_file_name = f'{self._dataset_name}_cleaned_mappings.csv'
-                read_csv(self._dataset_path).rename(columns=self._cleaned_dict, inplace=True).to_csv(f'{new_file_name}')
+                if not self._cleaned_filename:
+                    raise FileNotFoundError
 
-            if mapping == 'scraped':
-                new_file_name = f'{self._dataset_name}_scraped_mappings.csv'
-                read_csv(self._dataset_path).rename(columns=self._cleaned_dict, inplace=True).to_csv(new_file_name)
+                new_file_name = f'./Processed_Datasets/{self._dataset_name}_cleaned_mappings.csv'
+                read_csv(self._dataset_path).rename(columns=self._cleaned_dict).to_csv(new_file_name)
+                print(f'CSV file stored at: {new_file_name}')
 
-        except ValueError:
-            print('Please define a dataset path before remapping')
+            elif mapping == 'scraped':
+                if not self._filename:
+                    raise FileNotFoundError
+
+                new_file_name = f'./Processed_Datasets/{self._dataset_name}_scraped_mappings.csv'
+                read_csv(self.dataset_path).rename(columns=self._key_dict).to_csv(new_file_name)
+                print(f'CSV file stored at: {new_file_name}')
+
+        except AttributeError as error:
+            print(f'Please define a dataset path and scrape/clean before remapping.')
+            print(error)
+        except FileNotFoundError:
+            print(f'Please scrape the website or clean the results, cleaned or scraped dicts are missing')
+
     @staticmethod
     def create_required_dirs():
         """ Check for and create required directories"""
-        if not Path('./Generated_Keys/').is_dir() or not Path('./Generated_Keys/').is_dir() or not Path('./Processed_Datasets/'):
+        # Check for directories
+        if not Path('./Generated_Keys/').is_dir() or not Path('./Generated_Keys/').is_dir() or not Path(
+                './Processed_Datasets/').is_dir():
             Path('./Generated_Keys/').mkdir(parents=True, exist_ok=True)
             Path('./Processed_Keys/').mkdir(parents=True, exist_ok=True)
             Path('./Processed_Datasets/').mkdir(parents=True, exist_ok=True)
@@ -217,17 +248,11 @@ class KeyWebsite:
         else:
             print('Required directories present')
 
-    @classmethod
-    def check_url(cls, url):
-        """ Checks url to for correct typing """
-        try:
-            if not url:
-                raise ValueError
 
-            if not isinstance(url, str):
-                raise TypeError
-
-        except (ValueError, TypeError):
-            return "Please make sure you have defined the required variables"
-        else:
-            return 'Variable checks passed'
+# site = 'https://rptsvr1.tea.texas.gov/perfreport/tapr/2019/xplore/dapib.html'
+#
+# testsite = KeyWebsite(site)
+#
+# testsite.dataset_path = 'A://DS4A/Project/TEA/data/DAPIB.csv'
+#
+# testsite.remap()
