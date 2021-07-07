@@ -122,7 +122,7 @@ To use the tool, I suggest downloading the [`KeyProcessor.py`](https://github.co
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-A usage example can be found within the Converter Tool Example.pynb
+A usage example can be found within the [Example](https://github.com/OrSGar/TEA-Column-Renaming-Tool/tree/main/Example) directory. 
 
 <!-- CONTACT -->
 ## Contact
