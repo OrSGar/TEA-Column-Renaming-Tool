@@ -218,7 +218,7 @@ class KeyWebsite:
                     raise FileNotFoundError
 
                 new_file_name = f'./Processed_Datasets/{self._dataset_name}_cleaned_mappings.csv'
-                read_csv(self._dataset_path).rename(columns=self._cleaned_dict).to_csv(new_file_name)
+                read_csv(self._dataset_path).rename(columns=self._cleaned_dict).to_csv(new_file_name, index=False)
                 print(f'CSV file stored at: {new_file_name}')
 
             elif mapping == 'scraped':
@@ -226,7 +226,7 @@ class KeyWebsite:
                     raise FileNotFoundError
 
                 new_file_name = f'./Processed_Datasets/{self._dataset_name}_scraped_mappings.csv'
-                read_csv(self.dataset_path).rename(columns=self._key_dict).to_csv(new_file_name)
+                read_csv(self.dataset_path).rename(columns=self._key_dict).to_csv(new_file_name, index=False)
                 print(f'CSV file stored at: {new_file_name}')
 
         except AttributeError as error:
