@@ -4,10 +4,13 @@ import requests
 from bs4 import BeautifulSoup
 from pandas import read_csv
 
+# Or
 
 class KeyWebsite:
     """
         Key website class that represents a TEA website containing the key:value mappings for columns.
+
+        Author: Orlando Garcia, orland.s.gar@gmail.com
 
         Attributes
         ----------
@@ -49,6 +52,7 @@ class KeyWebsite:
             Checks for required directories present, creates them otherwise
         remap(mapping='cleaned')
             Remaps columns in original dataset to the dict generated from the original website dict or the cleaned dict
+
 
 
     """
